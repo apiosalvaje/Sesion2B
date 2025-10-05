@@ -8,6 +8,7 @@ public class Empleado {
 	float extras = 0;
 	
 	public float calculoNominaBruta(TipoEmpleado tipo, float ventasMes, float horasExtras) {
+		
 		//determinar salario base
 		if(tipo==TipoEmpleado.Encargado) {
 			salarioBase = 2500;
@@ -27,6 +28,19 @@ public class Empleado {
 		
 		return salarioBase + primas + extras;
 	}
+	
+    public float calculoNominaNeta(float nominaBruta) {
+    	
+        float retencion = 0;
+
+        if (nominaBruta >= 2500) {
+            retencion = 0.18f;
+        } else if (nominaBruta >= 2100) {
+            retencion = 0.15f;
+        }
+
+        return nominaBruta * (1 - retencion);
+    }
 	
 
 }
